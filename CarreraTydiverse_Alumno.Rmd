@@ -260,11 +260,9 @@ cran %>% group_by(package) %>%summarise(count = n()) %>%filter(count > quantile(
 ```
 23. Repite el apartado anterior utilizando **pipes** para que finalmente el resultado se ordene, en orden descendente, según el número de descargas (`count`) y se almacene el la variable `top_counts_sorted`
 ```{r}
+top_counts_sorted <- cran %>%group_by(package) %>%summarise(count = n()) %>%filter(count > quantile(count, probs = 0.99)) %>% arrange(desc(count))
 
-
-
-
-
+top_counts_sorted
 
 
 
